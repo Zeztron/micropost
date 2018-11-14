@@ -1,6 +1,5 @@
 # Micropost
-A broke verson of twitter running on a JSON server. Try it out anyways!\
-✧*｡٩(ˊᗜˋ*)و✧*｡
+Basically a twitter if Jack Dorsey only had a budget of $5.
 
 ## Demo here:
 > 
