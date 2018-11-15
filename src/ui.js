@@ -30,6 +30,39 @@ class UI {
 
         this.post.innerHTML = output;
     }
+
+    showAlert(message, className) {
+        this.clearAlert();
+        //create the div
+        const div = document.createElement("div");
+        // Add classes
+        div.className = className;
+        // Add text
+        div.appendChild(document.createTextNode(message));
+        // Get parent
+        const container = document.querySelector(".postsContainer");
+        // Get posts div
+        const posts = document.querySelector("#posts");
+        // Insert the alert div
+        container.insertBefore(div, posts);
+        // Go away after 3 seconds
+        setTimeout(() => {
+            this.clearAlert();
+        }, 3000);
+    }
+
+    clearAlert() {
+        const currentAlert = document.querySelector(".alert");
+
+        if(currentAlert) {
+            currentAlert.remove();
+        }
+    }
+
+    clearFields() {
+        this.titleInput.value = "";
+        this.bodyInput.value = "";
+    }
 }
 
 export const ui = new UI();
