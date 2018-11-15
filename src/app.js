@@ -10,6 +10,9 @@ document.querySelector(".post-submit").addEventListener("click", submitPost);
 // Listen for delete
 document.querySelector("#posts").addEventListener("click", deletePost);
 
+// Listen for edit state
+document.querySelector("#posts").addEventListener("click", enableEdit);
+
 // Get posts
 function getPosts() {
     http.get("http://localhost:3000/posts")
@@ -50,6 +53,23 @@ function deletePost(e) {
             .catch(err => console.log(err));
 
         }
+    }
+    e.preventDefault();
+}
+
+// Enable edit state
+function enableEdit(e) {
+    if(e.target.classList.contains("edit")) {
+        const id = e.target.dataset.id;
+        const title = e.target.previousElementSibling.previousElementSibling.textContent;
+        const body = e.target.previousElementSibling.textContent;
+        const data = {
+            id,
+            title,
+            body
+        }
+        // Fill the form with the current posts
+        ui.fillForm(data);
     }
     e.preventDefault();
 }
